@@ -26,8 +26,8 @@ f1 = customtkinter.CTkFrame(master=root, height=1222,width=800,fg_color="#84D2C5
 f1.place_configure(relx=0.5, rely=0.5, width=850, height=350, anchor=CENTER)
 
 Bottom = customtkinter.CTkFrame(master=root,
-                            fg_color="red")
-Bottom.place(x=0, y=530)
+                            fg_color="#B05A7A")
+Bottom.place(x=0, y=450,width = 850)
 # ==============================================
 #				 TIME
 # ==============================================
@@ -132,22 +132,15 @@ txtmode = customtkinter.CTkEntry(master=f1,
 				
 txtmode.grid(row = 3, column = 1,pady=8)
 
-# lblService = customtkinter.CTkLabel(master=f1,
-#                                text="შედეგი:",
-#                                width=200,
-#                                height=60, font = ('arial', 25, 'bold'))
-			
-# lblService.grid(row = 4, column = 0)
-
-# txtService = customtkinter.CTkEntry(master=f1,
-#                                textvariable=Result,
-#                                width=200,
-#                                height=50,
-#                                fg_color="powder blue",
-#                                border_width=3,
-#                                corner_radius=10)
+txtService = customtkinter.CTkEntry(master=Bottom,
+                               textvariable=Result,
+                               width=400,
+                               height=50,
+                               fg_color="powder blue",
+                               border_width=3,
+                               corner_radius=10)
 						
-# txtService.grid(row = 4, column = 1)
+txtService.place(x = 160, y=20)
 
 # Vigenère cipher
 import base64
