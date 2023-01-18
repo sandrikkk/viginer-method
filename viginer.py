@@ -46,7 +46,7 @@ lblInfo.place(x=310,y=50)
 rand = StringVar()
 Msg = StringVar()
 key = StringVar()
-mode = StringVar()
+mode = IntVar()
 Result = StringVar()
 
 # exit function
@@ -122,15 +122,18 @@ lblmode = customtkinter.CTkLabel(master=f1,
 								
 lblmode.grid(row = 3, column = 0,pady=8)
 
-txtmode = customtkinter.CTkEntry(master=f1,
-                               textvariable=mode,
-                               width=200,
-                               height=50,
-                               fg_color="powder blue",
-                               border_width=3,
-                               corner_radius=10)
+
+
+txtrdbtnmode1 =customtkinter.CTkRadioButton(master=f1, text="კოდირება", variable= mode,fg_color="red", value=1)
+txtrdbtnmode1.grid(row = 3, column = 1,pady=8)
+
+
+txtrdbtnmode2 =customtkinter.CTkRadioButton(master=f1, text="დეკოდირება", variable= mode,fg_color="green", value=2)
+txtrdbtnmode2.grid(row = 3, column = 2,pady=8)
+                                          
 				
-txtmode.grid(row = 3, column = 1,pady=8)
+
+
 
 txtService = customtkinter.CTkEntry(master=Bottom,
                                textvariable=Result,
@@ -141,6 +144,16 @@ txtService = customtkinter.CTkEntry(master=Bottom,
                                corner_radius=10)
 						
 txtService.place(x = 160, y=20)
+
+
+def on_select(v):
+    if v == 1:
+        print("Option 1 selected")
+    elif v == 2:
+        print("Option 2 selected")
+    else:
+        print("Option 3 selected")
+
 
 # Vigenère cipher
 import base64
@@ -179,7 +192,7 @@ def Ref():
 	k = key.get()
 	m = mode.get()
 
-	if (m == 'e'):
+	if (m == 1):
 		Result.set(encode(k, clear))
 	else:
 		Result.set(decode(k, clear))
