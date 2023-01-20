@@ -23,7 +23,7 @@ Tops.place(relx=0.5, rely=0, width=850, height=100, anchor="n")
 
 
 f1 = customtkinter.CTkFrame(master=root, height=1222,width=800,fg_color="#84D2C5")
-f1.place_configure(relx=0.5, rely=0.5, width=850, height=350, anchor=CENTER)
+f1.place_configure(x=0, y=100,width=850, height=350)
 
 Bottom = customtkinter.CTkFrame(master=root,
                             fg_color="#B05A7A")
@@ -116,7 +116,7 @@ txtkey = customtkinter.CTkEntry(master=f1,
 txtkey.grid(row = 2, column = 1,pady=8)
 
 lblmode = customtkinter.CTkLabel(master=f1,
-                               text="აირჩიეთ თუ რისი გაკეთება გსურთ",
+                               text="აირჩიეთ",
                                width=200,
                                height=60, font = ('arial', 25, 'bold'))
 								
