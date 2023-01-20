@@ -1,11 +1,11 @@
 # import tkinter module
 from tkinter import *
 import customtkinter
+from tkinter import messagebox
+
 
 # import other necessary modules
-import random
 import time
-import datetime
 customtkinter.set_default_color_theme("dark-blue")
 # creating root object
 root = customtkinter.CTk()
@@ -29,7 +29,7 @@ Bottom = customtkinter.CTkFrame(master=root,
                             fg_color="#B05A7A")
 Bottom.place(x=0, y=450,width = 850)
 # ==============================================
-#				 TIME
+#				 DRO
 # ==============================================
 localtime = time.asctime(time.localtime(time.time()))
 
@@ -146,20 +146,12 @@ txtService = customtkinter.CTkEntry(master=Bottom,
 txtService.place(x = 160, y=20)
 
 
-def on_select(v):
-    if v == 1:
-        print("Option 1 selected")
-    elif v == 2:
-        print("Option 2 selected")
-    else:
-        print("Option 3 selected")
-
 
 # Vigenère cipher
 import base64
 
 # Function to encode
-def encode(key, clear):
+def kodireba(key, clear):
 	enc = []
 	
 	for i in range(len(clear)):
@@ -172,7 +164,7 @@ def encode(key, clear):
 	return base64.urlsafe_b64encode("".join(enc).encode()).decode()
 
 # Function to decode
-def decode(key, enc):
+def dekodireba(key, enc):
 	dec = []
 	
 	enc = base64.urlsafe_b64decode(enc).decode()
@@ -186,16 +178,17 @@ def decode(key, enc):
 
 
 def Ref():
-	print("Message= ", (Msg.get()))
+    clear = Msg.get()
+    k = key.get()
+    m = mode.get()
+    if (not Msg.get() == "") and (not key.get() == "") and (not mode.get() == ""):
+        if (m == 1):
+            Result.set(kodireba(k, clear))
+        else:
+            Result.set(dekodireba(k, clear))
+    else:
+        messagebox.showerror("showerror", "გთხოვთ შეავსოთ მოცემული ველები !")
 
-	clear = Msg.get()
-	k = key.get()
-	m = mode.get()
-
-	if (m == 1):
-		Result.set(encode(k, clear))
-	else:
-		Result.set(decode(k, clear))
 
 # Show message button
 
