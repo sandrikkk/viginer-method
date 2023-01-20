@@ -206,7 +206,7 @@ btnTotal = customtkinter.CTkButton(master=f1,
                                  border_width=0,
                                  corner_radius=8,
                                  text="Show Message",
-                                 command=Ref, hover=True, hover_color="green").place(x=250, y=310)
+                                 command=Ref, hover=True, hover_color="green").place(x=150, y=310)
 
 
 # Reset button
@@ -216,7 +216,7 @@ btnReset = customtkinter.CTkButton(master=f1,
                                  border_width=0,
                                  corner_radius=8,
                                  text="Reset",
-                                 command=Reset,hover=True, hover_color="yellow",).place(x=416, y=310)
+                                 command=Reset,hover=True, hover_color="yellow",).place(x=316, y=310)
 
 # Exit button
 btnExit =customtkinter.CTkButton(master=f1,
@@ -225,7 +225,7 @@ btnExit =customtkinter.CTkButton(master=f1,
                                  border_width=0,
                                  corner_radius=8,
                                  text="Exit",
-                                 command=qExit, hover=True, hover_color="red").place(x=567, y=310)
+                                 command=qExit, hover=True, hover_color="red").place(x=467, y=310)
 
 # keeps window alive
 root.mainloop()
