@@ -15,17 +15,29 @@ root.resizable(False,False)
 
 # setting up the title of window
 root.title("ვიჟინერის მეთოდი") 
-Tops = customtkinter.CTkFrame(master=root,
-                            fg_color="#7286D3")                    
-Tops.place(relx=0.5, rely=0, width=850, height=100, anchor="n") 
+Tops = customtkinter.CTkFrame(master=root, fg_color="#7286D3")
+Tops.grid(row=0, column=0, sticky="nsew", pady=0)
+Tops.configure(height = 50)
+Tops.grid_rowconfigure(0, weight=1)
+Tops.grid_columnconfigure(0, weight=1)
 
 
-f1 = customtkinter.CTkFrame(master=root, height=1222,width=800,fg_color="#8EA7E9")
-f1.place_configure(x=0, y=100,width=850, height=350)
+f1 = customtkinter.CTkFrame(master=root, fg_color="#8EA7E9")
+f1.grid(row=1, column=0, sticky="nsew", pady=0)
 
-Bottom = customtkinter.CTkFrame(master=root,
-                            fg_color="#E5E0FF")
-Bottom.place(x=0, y=450,width = 850)
+
+
+
+
+Bottom = customtkinter.CTkFrame(master=root, fg_color="#E5E0FF")
+Bottom.grid(row=2, column=0, sticky="nsew")
+Bottom.configure(height=50)
+
+
+root.grid_columnconfigure(0, weight=1)
+root.grid_rowconfigure(0, weight=0)
+root.grid_rowconfigure(1, weight=2)
+root.grid_rowconfigure(2, weight=1)
 # ==============================================
 #				 DRO
 # ==============================================
@@ -33,12 +45,12 @@ localtime = time.asctime(time.localtime(time.time()))
 
 lblInfo = customtkinter.CTkLabel(Tops, font = ('helvetica', 30),
 		text = "ვიჟინერის მეთოდი", text_color="#FFF2F2",anchor="center")
-lblInfo.place(x=310,y=10)
+lblInfo.pack(side=TOP, anchor="center")
 
 lblInfo = customtkinter.CTkLabel(Tops, font=('arial', 20),
-			text = localtime, text_color="#E5E0FF",
-						height = 60, anchor = 'center')
-lblInfo.place(x=325,y=50)
+text = localtime, text_color="#E5E0FF",
+height = 60)
+lblInfo.pack(side=TOP, anchor = 'center')
 						
 
 rand = StringVar()
@@ -124,16 +136,16 @@ lblmode = customtkinter.CTkLabel(master=f1,
 
                                height=60, font = ('arial', 25))
 								
-lblmode.grid(row = 3, column = 0,pady=8)
+lblmode.grid(row = 3, column = 0,pady=5)
 
 
 
 txtrdbtnmode1 =customtkinter.CTkRadioButton(master=f1, text="კოდირება", variable= mode,fg_color="#FF8B13", value=1)
-txtrdbtnmode1.grid(row = 3, column = 1,pady=8)
+txtrdbtnmode1.grid(row = 3, column = 1,pady=5)
 
 
 txtrdbtnmode2 =customtkinter.CTkRadioButton(master=f1, text="დეკოდირება", variable= mode,fg_color="#FF8B13", value=2)
-txtrdbtnmode2.grid(row = 3, column = 2,pady=8)
+txtrdbtnmode2.grid(row = 3, column = 2,pady=5)
                                           
 				
 
@@ -146,8 +158,9 @@ txtService = customtkinter.CTkEntry(master=Bottom,
                                fg_color="#FFF2F2",
                                border_width=3,
                                corner_radius=10)
-						
-txtService.place(x = 160, y=20)
+Bottom.grid_columnconfigure(0, weight=1)
+Bottom.grid_rowconfigure(0, weight=1)
+txtService.grid(row=0, column=0)
 
 
 
@@ -201,31 +214,25 @@ def Ref():
 
 
 btnTotal = customtkinter.CTkButton(master=f1,
-                                 width=120,
-                                 height=32,
-                                 border_width=0,
-                                 corner_radius=8,
-                                 text="Show Message",
-                                 command=Ref, hover=True, hover_color="green").place(x=150, y=310)
+                                  width=120,
+                                   height=32,
+                                    border_width=0,
+                                        corner_radius=8,
+                                        text="Show Message",
+                                        command=Ref, hover=True
+                                        , hover_color="green")
+btnTotal.grid(row=4, column=0, padx=2)
+
+btnReset = customtkinter.CTkButton(master=f1, width=120, height=32, border_width=0, corner_radius=8, text="Reset", command=Reset, hover=True, hover_color="yellow")
+btnReset.grid(row=4, column=1, padx=2)
+
+btnExit = customtkinter.CTkButton(master=f1, width=120, height=32, border_width=0, corner_radius=8, text="Exit", command=qExit, hover=True, hover_color="red")
+btnExit.grid(row=4, column=2, padx=2)
 
 
-# Reset button
-btnReset = customtkinter.CTkButton(master=f1,
-                                 width=120,
-                                 height=32,
-                                 border_width=0,
-                                 corner_radius=8,
-                                 text="Reset",
-                                 command=Reset,hover=True, hover_color="yellow",).place(x=316, y=310)
-
-# Exit button
-btnExit =customtkinter.CTkButton(master=f1,
-                                 width=120,
-                                 height=32,
-                                 border_width=0,
-                                 corner_radius=8,
-                                 text="Exit",
-                                 command=qExit, hover=True, hover_color="red").place(x=467, y=310)
-
+f1.grid_columnconfigure(0, weight=1)
+f1.grid_columnconfigure(1, weight=1)
+f1.grid_columnconfigure(2, weight=1)
+f1.grid_rowconfigure(3, weight=1)
 # keeps window alive
 root.mainloop()
