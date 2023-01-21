@@ -178,16 +178,19 @@ def dekodireba(key, enc):
 
 
 def Ref():
-    clear = Msg.get()
-    k = key.get()
-    m = mode.get()
-    if (not Msg.get() == "") and (not key.get() == "") and (not mode.get() == ""):
-        if (m == 1):
-            Result.set(kodireba(k, clear))
+    try:
+        clear = Msg.get()
+        k = key.get()
+        m = mode.get()
+        if (not Msg.get() == "") and (not key.get() == "") and (not mode.get() == ""):
+            if (m == 1):
+                Result.set(kodireba(k, clear))
+            else:
+                Result.set(dekodireba(k, clear))
         else:
-            Result.set(dekodireba(k, clear))
-    else:
-        messagebox.showerror("showerror", "გთხოვთ შეავსოთ მოცემული ველები !")
+            messagebox.showerror("showerror", "გთხოვთ შეავსოთ მოცემული ველები !")
+    except:
+        messagebox.showerror("showerror", "გთხოვთ აირჩიოთ კოდირება გსურთ , თუ დეკოდირება !")
 
 
 # Show message button
