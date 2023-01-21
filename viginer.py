@@ -6,27 +6,25 @@ from tkinter import messagebox
 
 # import other necessary modules
 import time
-customtkinter.set_default_color_theme("dark-blue")
 # creating root object
-root = customtkinter.CTk()
+root = customtkinter.CTk()   
+ 
 # defining size of window
 root.geometry("700x550")
 root.resizable(False,False)
 
 # setting up the title of window
-root.title("ვიჟინერის მეთოდი")
-root.configure(background='black')
-
+root.title("ვიჟინერის მეთოდი") 
 Tops = customtkinter.CTkFrame(master=root,
-                            fg_color="#FFD4D4")
-Tops.place(relx=0.5, rely=0, width=850, height=100, anchor="n")
+                            fg_color="#7286D3")                    
+Tops.place(relx=0.5, rely=0, width=850, height=100, anchor="n") 
 
 
-f1 = customtkinter.CTkFrame(master=root, height=1222,width=800,fg_color="#84D2C5")
+f1 = customtkinter.CTkFrame(master=root, height=1222,width=800,fg_color="#8EA7E9")
 f1.place_configure(x=0, y=100,width=850, height=350)
 
 Bottom = customtkinter.CTkFrame(master=root,
-                            fg_color="#B05A7A")
+                            fg_color="#E5E0FF")
 Bottom.place(x=0, y=450,width = 850)
 # ==============================================
 #				 DRO
@@ -34,13 +32,13 @@ Bottom.place(x=0, y=450,width = 850)
 localtime = time.asctime(time.localtime(time.time()))
 
 lblInfo = customtkinter.CTkLabel(Tops, font = ('helvetica', 30),
-		text = "ვიჟინერის მეთოდი", text_color="white",anchor="center")
+		text = "ვიჟინერის მეთოდი", text_color="#FFF2F2",anchor="center")
 lblInfo.place(x=310,y=10)
 
 lblInfo = customtkinter.CTkLabel(Tops, font=('arial', 20),
-			text = localtime,
+			text = localtime, text_color="#E5E0FF",
 						height = 60, anchor = 'center')
-lblInfo.place(x=310,y=50)
+lblInfo.place(x=325,y=50)
 						
 
 rand = StringVar()
@@ -66,8 +64,9 @@ def Reset():
 
 lblReference = customtkinter.CTkLabel(master=f1,
                                text="სახელი",
+                               text_color="#FFFFE8",
                                width=200,
-                               height=60, font = ('arial', 25, 'bold'))
+                               height=60, font = ('arial', 25))
 				
 lblReference.grid(row = 0, column = 0,pady=8)
 
@@ -75,7 +74,7 @@ txtReference = customtkinter.CTkEntry(master=f1,
                                textvariable=rand,
                                width=200,
                                height=50,
-                               fg_color="powder blue",
+                               fg_color="#FFF2F2",
                                border_width=3,
                                corner_radius=10)
 						
@@ -84,8 +83,9 @@ txtReference.grid(row = 0, column = 1,pady=8)
 # labels
 lblMsg = customtkinter.CTkLabel(master=f1,
                                text="ტექსტური მესიჯი",
+                               text_color="#FFFFE8",
                                width=200,
-                               height=60, font = ('arial', 25, 'bold'))
+                               height=60, font = ('arial', 25))
 		
 lblMsg.grid(row = 1, column = 0,pady=8)
 
@@ -93,15 +93,17 @@ txtMsg = customtkinter.CTkEntry(master=f1,
                                textvariable=Msg,
                                width=200,
                                height=50,
-                               fg_color="powder blue",
+                               fg_color="#FFF2F2",
                                border_width=3,
                                corner_radius=10)			
 txtMsg.grid(row = 1, column = 1,pady=8)
 
 lblkey = customtkinter.CTkLabel(master=f1,
                                text="გასაღები",
+                                                              text_color="#FFFFE8",
+
                                width=200,
-                               height=60, font = ('arial', 25, 'bold'))
+                               height=60, font = ('arial', 25))
 			
 lblkey.grid(row = 2, column = 0,pady=8)
 
@@ -109,7 +111,7 @@ txtkey = customtkinter.CTkEntry(master=f1,
                                textvariable=key,
                                width=200,
                                height=50,
-                               fg_color="powder blue",
+                               fg_color="#FFF2F2",
                                border_width=3,
                                corner_radius=10)
 				
@@ -118,17 +120,19 @@ txtkey.grid(row = 2, column = 1,pady=8)
 lblmode = customtkinter.CTkLabel(master=f1,
                                text="აირჩიეთ",
                                width=200,
-                               height=60, font = ('arial', 25, 'bold'))
+                                                              text_color="#FFFFE8",
+
+                               height=60, font = ('arial', 25))
 								
 lblmode.grid(row = 3, column = 0,pady=8)
 
 
 
-txtrdbtnmode1 =customtkinter.CTkRadioButton(master=f1, text="კოდირება", variable= mode,fg_color="red", value=1)
+txtrdbtnmode1 =customtkinter.CTkRadioButton(master=f1, text="კოდირება", variable= mode,fg_color="#FF8B13", value=1)
 txtrdbtnmode1.grid(row = 3, column = 1,pady=8)
 
 
-txtrdbtnmode2 =customtkinter.CTkRadioButton(master=f1, text="დეკოდირება", variable= mode,fg_color="green", value=2)
+txtrdbtnmode2 =customtkinter.CTkRadioButton(master=f1, text="დეკოდირება", variable= mode,fg_color="#FF8B13", value=2)
 txtrdbtnmode2.grid(row = 3, column = 2,pady=8)
                                           
 				
@@ -139,7 +143,7 @@ txtService = customtkinter.CTkEntry(master=Bottom,
                                textvariable=Result,
                                width=400,
                                height=50,
-                               fg_color="powder blue",
+                               fg_color="#FFF2F2",
                                border_width=3,
                                corner_radius=10)
 						
@@ -179,14 +183,14 @@ def dekodireba(key, enc):
 
 def Ref():
     try:
-        clear = Msg.get()
+        msg = Msg.get()
         k = key.get()
         m = mode.get()
         if (not Msg.get() == "") and (not key.get() == "") and (not mode.get() == ""):
             if (m == 1):
-                Result.set(kodireba(k, clear))
+                Result.set(kodireba(k, msg))
             else:
-                Result.set(dekodireba(k, clear))
+                Result.set(dekodireba(k, msg))
         else:
             messagebox.showerror("showerror", "გთხოვთ შეავსოთ მოცემული ველები !")
     except:
